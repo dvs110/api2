@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Noise level meter</title>
+    <script src="/socket.io/socket.io.js"></script>
+
+</head>
+
+<body style=" background: rgb(178, 177, 177);
+font-family: Arial, sans-serif;
+text-align: center;
+justify-content: center;">
+    <div class="container" style="  width: 40%;
+    height: 100%;
+    background: lightblue;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-top: 13rem;
+    margin-left: 23rem;
+    padding: 5rem;">
+        <h1 style=" font-size: 4rem;
+        font-weight: bold;">Noise level meter</h1>
+        <div id="noiseLevel" style="font-size: 3rem;"></div>
+
+
+    </div>
+
+    <script>
+        const socket = io(); //using method io to connect to backend socket
+        socket.on('noiseLevel', (data) => {
+            document.getElementById('noiseLevel').innerText = `Noise level: ${data} dB`;
+        });
+    </script>
+</body>
+
+</html>
